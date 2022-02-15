@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=<>, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <!--文本差值-->
     <!-- <div id="app">{{book}}</div>
@@ -65,18 +67,18 @@
             return fmt;
         } -->
 
-        <!--输出html-->
-        <span id="app" v-html="link"></span>
-        <script src="https://unpkg.com/vue@2"></script>
-        <script>
-            var app = new Vue({
-                el:'#app',
-                data:{
-                    link:'<a href="#">这是一个链接</a>'
-                }
-            })
-
-        </script>
+    <!--输出html-->
+    <span id="app" v-html="link"></span>
+    <script src="https://unpkg.com/vue@2"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                link: '<a href="#">这是一个链接</a>'
+            }
+        })
+    </script>
     </script>
 </body>
+
 </html>

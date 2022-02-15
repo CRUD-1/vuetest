@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title> 
+    <title>Document</title>
 </head>
+
 <body>
-    <div id = "app">
+    <div id="app">
         <p v-if="show">我就看看能不能显示</p>
         <a v-bind:href="url">链接</a>
         <button v-on:click="handleClose">点击隐藏</button>
@@ -17,18 +19,19 @@
     <script src="https://unpkg.com/vue@2"></script>
     <script>
         var app = new Vue({
-            el:'#app',
-            data:{
-                show:true,
-                url:'https://www.baidu.com',
-                imgUrl:'https://cn.vuejs.org/images/logo.svg'
+            el: '#app',
+            data: {
+                show: true,
+                url: 'https://www.baidu.com',
+                imgUrl: 'https://cn.vuejs.org/images/logo.svg'
             },
-            methods:{
-                handleClose:function(){
+            methods: {
+                handleClose: function () {
                     this.show = false;
                 }
             }
         })
     </script>
 </body>
+
 </html>

@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <div id="app"></div>
     <script src="https://unpkg.com/vue@2"></script>
@@ -18,21 +20,20 @@
         // })
         // console.log(app.a)
         var myData = {
-            a:1
+            a: 1
         }
 
         var app = new Vue({
-            el:'#app',
-            data:myData
+            el: '#app',
+            data: myData
         })
 
-        console.log(app.a);//1
+        console.log(app.a); //1
         app.a = 2;
-        console.log(myData.a);//2
-        myData.a=3;
-        console.log(app.a);//3
-
-
+        console.log(myData.a); //2
+        myData.a = 3;
+        console.log(app.a); //3
     </script>
 </body>
+
 </html>
