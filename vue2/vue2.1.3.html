@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=<>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--文本差值-->
+    <!-- <div id="app">{{book}}</div>
+    <script src="https://unpkg.com/vue@2"></script>
+    <script>
+        var app = new Vue({
+            el:'#app',
+            data:{
+                book:'Hello,Vue~'
+            }
+        })
+    </script> -->
+
+    <!--自动显示时间-->
+    <!-- <div id="app">{{date}}</div>
+    <script src="https://unpkg.com/vue@2"></script>
+    <script>
+        
+        var app = new Vue({
+            el:'#app',
+            data:{
+                date:new Date()
+            },
+            mounted:function(){
+                var _this = this;   //声明一个变量指向this,保证作用域一致
+                this.timer = setInterval(function(){
+                    var time = new Date();
+                    _this.date = time.dateFormat("yyyy-MM-dd hh:mm:ss SSSS");//修改时间
+                },100)
+            },
+            beforeDestory:function(){
+                if(this.timer){
+                    clearInterval(this.timer);//在vue实例销毁前，清除定时器
+                }
+            }
+        })
+
+        //日期格式化函数
+        Date.prototype.dateFormat = function (fmt) {
+            let ret;
+            const opt = {
+                "y+": this.getFullYear().toString(),        // 年
+                "M+": (this.getMonth() + 1).toString(),     // 月
+                "d+": this.getDate().toString(),            // 日
+                "h+": this.getHours().toString(),           // 时
+                "m+": this.getMinutes().toString(),         // 分
+                "s+": this.getSeconds().toString(),         // 秒
+                "S+": this.getMilliseconds().toString()     //毫秒
+                // 有其他格式化字符需求可以继续添加，必须转化成字符串
+            };
+            for (let k in opt) {
+                ret = new RegExp("(" + k + ")").exec(fmt);
+                if (ret) {
+                    fmt = fmt.replace(ret[1], (ret[1].length == 1) ? (opt[k]) : (opt[k].padStart(ret[1].length, "0")))
+                };
+            };
+            return fmt;
+        } -->
+
+        <!--输出html-->
+        <span id="app" v-html="link"></span>
+        <script src="https://unpkg.com/vue@2"></script>
+        <script>
+            var app = new Vue({
+                el:'#app',
+                data:{
+                    link:'<a href="#">这是一个链接</a>'
+                }
+            })
+
+        </script>
+    </script>
+</body>
+</html>
