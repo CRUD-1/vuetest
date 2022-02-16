@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>对象语法</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 动态切换class  类名active依赖于数据isActive,其为true时,div会拥有类名Active ,为false时则没有 -->
+        <div :class="{'active':isActive}"></div>
+        <!-- 传入多个属性,动态切换class，：class可以与普通class共存 -->
+        <div class="static" :class="{'active':isActive,'error':isError}"></div>
+        <!-- 绑定计算属性实现更复杂的:class表达式 -->
+        <div :class="classes"></div>
+    </div>
+    <script src="https://unpkg.com/vue@2"></script>
+    <script>
+        var app = new Vue({
+            el:'#app',
+            data:{
+                isActive:true,
+                error:false,
+                isError:true
+            },
+            computed:{
+                classes:function(){
+                    return {
+                        active:this.isActive && !this.error,
+                        'text-fail':!this.error && !(this.error.type === 'dd')
+                        //===
+                        // 1、如果类型不同，就[不相等]
+                        // 2、如果两个都是数值，并且是同一个值，那么[相等]；(！例外)的是，如果其中至少一个是NaN，那么[不相等]。（判断一个值是否是NaN，只能用isNaN()来判断）
+                        // 3、如果两个都是字符串，每个位置的字符都一样，那么[相等]；否则[不相等]。
+                        // 4、如果两个值都是true，或者都是false，那么[相等]。
+                        // 5、如果两个值都引用同一个对象或函数，那么[相等]；否则[不相等]。
+                        // 6、如果两个值都是null，或者都是undefined，那么[相等]。
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
