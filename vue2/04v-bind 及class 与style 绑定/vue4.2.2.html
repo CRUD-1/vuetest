@@ -10,15 +10,36 @@
 
 <body>
     <div id="app">
+        <!-- 数组语法 -->
         <div :class="[activeCls,errorCls]"></div>
+        <!-- 三元表达式 -->
+        <div :class="[isActive ? activeCls : '',errorCls]"></div>
+        <!-- 数组中使用对象语法 -->
+        <div :class="[{'active':isActive},errorCls]"></div>
+        <!-- 计算属性绑定,并使用对象语法 -->
+        <button :class="classes"></button>
     </div>
     <script src="https://unpkg.com/vue@2"></script>
     <script>
         var app = new Vue({
-            el:'#app',
-            data:{
-                activeCls:'active',
-                errorCls:'error'
+            el: '#app',
+            data: {
+                isActive: true, //三元表达式
+                activeCls: 'active',
+                errorCls: 'error',
+                size: 'large',
+                disabled: true
+            },
+            computed: {
+                classes: function () {
+                    return [
+                        'btn',
+                        {
+                            ['btn-' + this.size]: this.size != '',
+                            ['btn-disabled']: this.disabled
+                        }
+                    ];
+                }
             }
         })
     </script>
