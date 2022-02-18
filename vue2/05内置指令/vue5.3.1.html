@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- v-for -->
+        <ul>
+            <li v-for="book in books">{{book.name}}</li>
+        </ul>
+        <!-- v-for可选参数作为索引 -->
+        <ul>
+            <li v-for="(book,index) in books">{{index}} - {{book.name}}</li>
+        </ul>
+        <!-- v-for使用在template上 -->
+        <ul>
+            <template v-for="book in books">
+                <li>书名：{{book.name}}</li>
+                <li>作者：{{book.author}}</li>
+            </template>
+        </ul>
+        <!-- 遍历对象 -->
+        <span v-for="value in user">{{value}}</span>
+        <!-- 遍历对象属性时，可选参数键名、索引 -->
+        <ul>
+            <li v-for="(value1,key,index) in user">{{index}}-{{key}}：{{value1}}</li>
+        </ul>
+        <!-- 迭代整数 -->
+        <span v-for="n in 10">{{n}}</span>
+    </div>
+    <script src="https://unpkg.com/vue@2"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                books: [{
+                        name: '《1》',
+                        author: '张三'
+                    },
+                    {
+                        name: '《2》',
+                        author: '李四'
+                    },
+                    {
+                        name: '《3》',
+                        author: '王五'
+                    }
+                ],
+                user: {
+                    name: 'Tom',
+                    gender: '男',
+                    age: 26
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

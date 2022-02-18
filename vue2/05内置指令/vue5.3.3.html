@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>过滤与排序</title>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <template v-for="book in fillterBooks">
+                <li>书名：{{book.name}}</li>
+                <li>作者：{{book.author}}</li>
+            </template>
+        </ul>
+        <ul>
+            <template v-for="book1 in sortedBooks">
+                <li>书名：{{book1.name}}</li>
+                <li>作者：{{book1.author}}</li>
+            </template>
+        </ul>
+    </div>
+    <script src="https://unpkg.com/vue@2"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                books: [{
+                        name: '《Vue.js 实战》',
+                        author: '张三'
+                    },
+                    {
+                        name: '《JavaScript 高级程序设计》',
+                        author: '李四'
+                    },
+                    {
+                        name: '《JavaScript 语言精粹》',
+                        author: '王五'
+                    }
+                ]
+            },
+            //通过computed，没有修改books数组
+            computed:{
+                fillterBooks:function(){
+                    return this.books.filter(function(book){
+                        return book.name.match(/JavaScript/);
+                    });
+                },
+                sortedBooks:function(){
+                    return this.books.sort(function(a,b){
+                        console.log(a.name.length + ' ' + b.name.length);
+                        return a.name.length - b.name.length;
+                    })
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

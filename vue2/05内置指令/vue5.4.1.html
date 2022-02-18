@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>方法与事件</title>
+</head>
+
+<body>
+    <div id="app">
+        点击次数：{{counter}}
+        <button @click="counter++">+1</button>
+        <button @click="handleAdd()">+1</button>
+        <button @click="handleAdd(10)">+10</button>
+        <a href="http:///www.baidu.com" @click="handleClick('禁止打开',$event)">打开链接</a>
+    </div>
+    <script src="https://unpkg.com/vue@2"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                counter: 0
+            },
+            methods: {
+                handleAdd: function (count) {
+                    console.log(count || 1);
+                    console.log('count' + count);
+                    console.log(1 || count);
+                    console.log('count' + count);
+                    console.log(count || 0);
+                    console.log('count' + count);
+                    console.log(0 || count);
+                    count = count || 1;
+                    this.counter += count;
+                },
+                handleClick: function(message, event) {
+                    event.preventDefault();//取消该事件
+                    window.alert(message);
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

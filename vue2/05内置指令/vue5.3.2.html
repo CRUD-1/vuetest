@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组更新</title>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <template v-for="book in books">
+                <li>书名：{{book.name}}</li>
+                <li>作者：{{book.author}}</li>
+            </template>
+        </ul>
+    </div>
+    <script src="https://unpkg.com/vue@2"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                books: [{
+                        name: '《Vue.j s 实战》',
+                        author: '张三'
+                    },
+                    {
+                        name: '《JavaScript 语言精粹》',
+                        author: '李四'
+                    },
+                    {
+                        name: '《JavaScript 高级程序设计》',
+                        author: '王五'
+                    }
+                ]
+            }
+        })
+
+        // app.books = app.books.filter(function (item) {
+        //     //只显示名字包含2的内容
+        //     return item.name.match(/《JavaScript/);
+        // })
+
+        //变动数组，直接通过索引修改、或者修改数组长度无效
+        Vue.set(app.books, 3, {
+            name: 'CSS揭秘',
+            author: '[希] Lea Verou'
+
+        })
+
+        app.books.splice(4, 1, {
+            name: '《css 揭秘》',
+            author:'［ 希J Lea Verou'
+        })
+    </script>
+</body>
+
+</html>
