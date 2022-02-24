@@ -9,13 +9,22 @@
 </head>
 
 <body>
-    <div id="app"></div>
+    <div id="app">
+        <!-- 阻止单击事件冒泡 -->
+        <a @click.stop="handle"></a>
+        <!-- 提交事件不在重载页面 -->
+        <form @submit.prevent="handle"></form>
+        <!-- 只触发一次，组件同样试用 -->
+        <div @click.once="handle"></div>
+        <!-- 只当事件在该元素本身触发回调 -->
+        <div @click.self="handle"></div>
+    </div>
     <script src="https://unpkg.com/vue@2"></script>
     <script>
         var app = new Vue({
-            el:'#app',
-            data:{
-                text:''
+            el: '#app',
+            data: {
+                text: ''
             }
         })
     </script>
