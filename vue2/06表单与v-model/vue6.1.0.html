@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>表单控件基本用法</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 输入框 -->
+        <h1>输入框</h1>
+        <input type="text" v-model="message" placeholder="输入...">
+        <p>input输入内容是：{{message}}</p>
+        <!-- 文本块 -->
+        <h1>文本块</h1>
+        <textarea v-model="text" placheholder="输入..."></textarea>
+        <p style="white-space:pre">{{text}}</p>
+        <!-- @input,输入拼音阶段实时更新 -->
+        <h1>文本框@input</h1>
+        <input type="text" @input="handleInput" placeholder="输入...">
+        <p>@input输入的内容是{{message2}}</p>
+        <!-- 单选 -->
+        <h1>单选</h1>
+        <input type="radio" :checked="picked">
+        <br>
+        <!-- 单选组合 -->
+        <h1>单选组合</h1>
+        <input type="radio" v-model="pickeds" value='html' id="html">
+        <label for="html">HTML</label>
+        <br>
+        <input type="radio" v-model="pickeds" value='js' id="js">
+        <label for="html">JS</label>
+        <br>
+        <input type="radio" v-model="pickeds" value='css' id="css">
+        <label for="html">CSS</label>
+        <br>
+        <p>选择的是：{{pickeds}}</p>
+        <!-- 复选框 -->
+        <h1>复选框</h1>
+        <input type="checkbox" name="" id="checked" v-model="checked">
+        <label for="checked">选择状态：{{checked}}</label>
+        <!-- 复选框组合 -->
+        <h1>复选框组合</h1>
+        <input type="checkbox" name="" id="htmlCheck" v-model="checkeds" value="html">
+        <label for="htmlCheck">HTML</label>
+        <br>
+        <input type="checkbox" name="" id="jsCheck" v-model="checkeds" value="js">
+        <label for="jsCheck">JS</label>
+        <br>
+        <input type="checkbox" name="" id="cssCheck" v-model="checkeds" value="css">
+        <label for="cssCheck">CSS</label>
+        <br>
+        <p>选择的选项是：{{checkeds}}</p>
+        <!-- 选择列表 -->
+        <h1>选择列表</h1>
+        <!-- 绑定multple可以多选 -->
+        <select v-model="selected" multiple>
+            <option>html</option>
+            <option value="js">JavaScript</option>
+            如果有value优先匹配value
+            <option>css</option>
+        </select>
+        <p>选择的项是：{{selected}}</p>
+        <!-- 使用v-for动态输出 -->
+        <h1>使用v-for动态输出</h1>
+        <select v-model="selected2">
+            <option v-for="option in options" :value="option.value">{{option.text}}</option>
+        </select>
+        <p>选择的项是：{{selected2}}</p>
+    </div>
+    <script src="https://unpkg.com/vue@2"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: '',
+                text: '',
+                message2: '',
+                picked: true,
+                pickeds: 'js',
+                checked: false,
+                checkeds: ['html', 'css'],
+                selected: ['css', 'js'],
+                selected2: 'html',
+                options: [{
+                    text: 'HTML',
+                    value: 'html'
+                }, {
+                    text: 'JavaScript',
+                    value: 'js'
+                }, {
+                    text: 'CSS',
+                    value: 'css'
+                }]
+            },
+            methods: {
+                handleInput: function (e) {
+                    // console.log(e);
+                    this.message2 = e.target.value;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

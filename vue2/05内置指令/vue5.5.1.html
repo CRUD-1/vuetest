@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>利用计算属性、指令等知识开发购物小车儿2.1.0版本~~~</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <template v-if="list.length">
+            <table>
+                <thead>
+                    <tr>
+                        <th><input type="checkbox" v-model="checkedAll" @click="changeAll()"
+                                :checked="checkedAll === true"></th>
+                        <th></th>
+                        <th>商品名称</th>
+                        <th>商品单价</th>
+                        <th>购买数量</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template v-for="(item1,x) in list">
+                        <tr v-for="(item,y) in item1" :bgcolor="changeColor(x)">
+                            <td><input type="checkbox" @click="changeOne(x,y)" :checked="item.ifChecked === true">
+                            </td>
+                            <td>{{list[x].length * x + y + 1}}</td>
+                            <td>{{item.name}}</td>
+                            <td>{{item.price}} 元</td>
+                            <td>
+                                <button @click="handleReduce(x,y)"
+                                    :disabled="item.count === 1||item.ifChecked === false">-</button>
+                                {{item.count}}
+                                <button @click="handleAdd(x,y)" :disabled="item.ifChecked === false">+</button>
+                            </td>
+                            <td>
+                                <button @click="handleRemove(x,y)">移除</button>
+                            </td>
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
+            <div>总价：￥{{totalPrice}}</div>
+        </template>
+        <div v-else>购物车为空</div>
+    </div>
+    <script src="https://unpkg.com/vue@2"></script>
+    <script src="vue5.5.1.js"></script>
+</body>
+
+</html>
