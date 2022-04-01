@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使用props传递数据</title>
+</head>
+
+<body>
+    <div id="app">
+        <my-component message="来自父组件的数据"></my-component>
+        <my-component2 warning-text="提示信息"></my-component2>
+
+        <!-- 动态通信
+        v-bind传的是对象、数组等，否则是字符串 -->
+        <input type="text" v-model="parentMessage">
+        <my-component :message="parentMessage"></my-component>
+    </div>
+    <script src="https://unpkg.com/vue@2"></script>
+    <script>
+        Vue.component('my-component', {
+            props: ['message'],
+            template: '<div>{{message}}</div>'
+        })
+
+        //驼峰命名法
+        Vue.component('my-component2', {
+            props: ['warningText'],
+            template: '<div>{{warningText}}</div>'
+        })
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                parentMessage: ''
+            }
+        })
+    </script>
+</body>
+
+</html>
